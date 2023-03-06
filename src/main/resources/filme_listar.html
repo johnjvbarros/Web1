@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Filmes</title>
+</head>
+<body>
+<h1>Lista de Filmes</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Titulo</th>
+    <th>Duração</th>
+    <th>Genero</th>
+    <th>Sinopse</th>
+    <th>imdb</th>
+    <th>imagem</th>
+    <th>Like</th>
+    <th>Atores</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="filme : ${filmes}">
+    <td th:text="${filme.id}"></td>
+    <td th:text="${filme.titulo}"></td>
+    <td th:text="${filme.duracao}"></td>
+    <td><a th:href="@{/filme/editar/{id}(id=${filme.id})}">Editar</a></td>
+    <td><a th:href="@{/filme/remover/{id}(id=${filme.id})}" onclick="return confirm('Tem certeza que deseja excluir este filme?')">Excluir</a></td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/filme/novo}">Adicionar novo filme</a>
+</body>
+</html>
